@@ -1,0 +1,373 @@
+/* CSS Requirements: Use of Flexbox/Grid, Responsive Design */
+:root {
+    --primary-color: #cad958; /* Lime Green */
+    --primary-dark: #afc425;  /* Darker shade for hover states */
+    --secondary-color: #28a745; /* Green for actions */
+    --dark-bg: #222;
+    --light-bg: #f8f9fa;
+    --text-color: #333;
+    --border-color: #dee2e6;
+    --shadow-soft: 0 10px 30px rgba(0,0,0,0.08); /* Smoother shadow */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+    
+    /* --- NEW: Dot Matrix Background Pattern --- */
+    background-color: #ffffff;
+    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+    background-size: 24px 24px; /* Creates a subtle grid texture */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--dark-bg);
+    color: white;
+    display: flex;
+    flex-direction: column; /* Stack for mobile */
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.site-name {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px; /* Pill shape links */
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+nav ul li a:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-bg); /* Dark text on light button for contrast */
+    font-weight: bold;
+    transform: translateY(-2px);
+}
+
+/* --- General Section Styling --- */
+section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Updated Section Alt: Use a solid color to break the dot pattern */
+.section-alt {
+    background-color: #fcfcfc;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+}
+
+h2 {
+    font-size: 36px;
+    color: #444;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Decorative underline for H2 */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --- NEW: Hero Section Design --- */
+.hero-section {
+    text-align: center;
+    padding: 100px 20px 80px;
+    background: linear-gradient(135deg, #fff 50%, #f1f6d8 100%); /* Subtle gradient using your primary color tint */
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid white; /* White border separates image from background */
+    margin-bottom: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    transition: transform 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05) rotate(3deg); /* Fun interaction */
+}
+
+/* --- Skills Section --- */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.skill {
+    text-align: center;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    min-width: 110px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.skill:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.skill img {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 15px;
+}
+
+/* --- Projects Section (Grid) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: white;
+    /* Removed left border, replaced with top border for cleaner look */
+    border-top: 5px solid var(--primary-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: border 0.3s;
+}
+
+.project-link:hover {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* --- Education/Timeline Styling --- */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+    border-left: 3px solid #e9ecef;
+}
+
+.timeline-item {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -49px; /* Aligns with the line */
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid var(--primary-color);
+}
+
+.timeline-item h3 {
+    margin: 0 0 8px 0;
+    color: var(--dark-bg);
+}
+
+.timeline-item .date {
+    font-size: 0.9em;
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* --- Certifications --- */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.cert-card {
+    background-color: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+.cert-card:hover {
+    transform: translateY(-8px);
+}
+
+.cert-image-display {
+    width: 100%;
+    max-height: 200px; 
+    height: auto; 
+    object-fit: contain; 
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cert-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.cert-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.cert-link:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+/* --- Forms --- */
+#contact-form, #recommendations {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #eee;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #222; /* Dark text reads better on lime green */
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(202, 217, 88, 0.4); /* Glow effect */
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-bg);
+    color: #aaa;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9em;
+}
+
+/* --- Scroll Top Icon --- */
+.home-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.home-icon:hover {
+    transform: scale(1.1);
+    background-color: white;
+}
